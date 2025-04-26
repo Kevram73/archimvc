@@ -1,0 +1,9 @@
+-- Your SQL goes here
+CREATE TABLE agent_gains (
+    id INTEGER PRIMARY KEY NOT NULL,
+    gain_id INTEGER NOT NULL REFERENCES gains(id),
+    agent_id INTEGER NOT NULL REFERENCES agents(id),
+    facteur INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)

@@ -1,0 +1,10 @@
+CREATE TABLE jeux (
+    id INTEGER PRIMARY KEY NOT NULL,
+    nom TEXT,
+    pays_id INTEGER NOT NULL,
+    actif BOOLEAN NOT NULL DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_jeux_pays_id ON jeux(pays_id);

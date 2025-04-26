@@ -9,7 +9,7 @@ use actix_web::{App, HttpServer, web};
 use routes::configure_routes;
 use dotenvy::dotenv;
 use diesel_migrations::{embed_migrations, EmbeddedMigrations, MigrationHarness};
-use seeders::seed_users;
+use seeders::{seed_users, seed_profiles, seed_agents, seed_agent_gains};
 
 pub const MIGRATIONS: EmbeddedMigrations = embed_migrations!("migrations");
 
@@ -26,7 +26,10 @@ async fn main() -> std::io::Result<()> {
 
     // Exécuter les seeders
     if std::env::var("RUN_SEEDERS").unwrap_or_else(|_| "false".to_string()) == "true" {
-        seed_users(&pool);
+        let _ = seed_users(&pool);
+        let _ = seed_profiles(&pool);
+        let _ = seed_agents(&pool);
+        let _ = seed_agent_gains(&pool);
     }
 
     HttpServer::new(move || {

@@ -1,7 +1,7 @@
 use actix_web::{get, HttpResponse, Responder};
 
-mod user_controller;
-pub use user_controller::*;
+mod jeu_controller;
+pub use jeu_controller::*;
 
 #[get("/")]
 pub async fn index() -> impl Responder {
